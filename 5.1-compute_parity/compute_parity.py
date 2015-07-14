@@ -107,42 +107,52 @@ def compute_parity_shifting(number):
     Compute the parity of a number by comparing the number to smaller halves of itself over and over.  Because XOR is
     commutative we can XOR a 64-bit number 6 times to compute its parity.
     i.e. 64 = 0000000000000000000000000000000000000000000000000000000001000000
-    0000000000000000000000000000000000000000000000000000000001000000 ^ 00000000000000000000000000000000 = 00000000000000000000000001000000 / 32
-    00000000000000000000000001000000 ^ 0000000000000000 = 0000000001000000 / 16
-    0000000001000000 ^ 01000000 = 01000000 / 8
-    01000000 ^ 0100 = 1000100 / 4
-    1000100 ^ 10001 = 1010100 / 2
-    1010100 ^ 101010 = 1 / 1
+        0000000000000000000000000000000000000000000000000000000001000000
+    ^                                   00000000000000000000000000000000 / Shift 32 bits
+    --------------------------------------------------------------------
+        0000000000000000000000000000000000000000000000000000000001000000
+    ^                   000000000000000000000000000000000000000000000000 / Shift 16 bits
+    --------------------------------------------------------------------
+        0000000000000000000000000000000000000000000000000000000001000000
+    ^           00000000000000000000000000000000000000000000000000000000 / Shift 8 bits
+    --------------------------------------------------------------------
+        0000000000000000000000000000000000000000000000000000000001000000
+    ^       000000000000000000000000000000000000000000000000000000000100 / Shift 4 bits
+    --------------------------------------------------------------------
+        0000000000000000000000000000000000000000000000000000000001000100
+          00000000000000000000000000000000000000000000000000000000010001 / Shift 2 bits
+    --------------------------------------------------------------------
+        0000000000000000000000000000000000000000000000000000000001010101
+    ^    000000000000000000000000000000000000000000000000000000000101010 / Shift 1 bit
+    --------------------------------------------------------------------
+        0000000000000000000000000000000000000000000000000000000001111111
+    &                                                                  1
+    --------------------------------------------------------------------
+                                                                       1
     """
     bitmask = 0b1111111111111111111111111111111111111111111111111111111111111111
     number &= bitmask
-    # print number
 
     number ^= number >> 32
-    print number
     number ^= number >> 16
-    print number
     number ^= number >> 8
-    print number
     number ^= number >> 4
-    print number
     number ^= number >> 2
-    print number
-    # number ^= number >> 1
+    number ^= number >> 1
 
-    return number
+    return number & 1
 
 number = int(raw_input())
-# brute_force_results = compute_parity_brute_force(number)
-# print 'parity of %d using compute_parity_brute_force is: %d, the number of iterations required is: %d' \
-#       % (number, brute_force_results[0], brute_force_results[1])
+brute_force_results = compute_parity_brute_force(number)
+print 'parity of %d using compute_parity_brute_force is: %d, the number of iterations required is: %d' \
+      % (number, brute_force_results[0], brute_force_results[1])
 
-# erase_lowest_bit_results = compute_parity_erase_lowest_set_bit(number)
-# print 'parity of %d using compute_parity_erase_lowest_set_bit is: %d, the number of iterations required is: %d' \
-#       % (number, erase_lowest_bit_results[0], erase_lowest_bit_results[1])
+erase_lowest_bit_results = compute_parity_erase_lowest_set_bit(number)
+print 'parity of %d using compute_parity_erase_lowest_set_bit is: %d, the number of iterations required is: %d' \
+      % (number, erase_lowest_bit_results[0], erase_lowest_bit_results[1])
 
-# cache_results = compute_parity_cache(number)
-# print 'parity of %d using compute_parity_cache is: %d' % (number, cache_results)
+cache_results = compute_parity_cache(number)
+print 'parity of %d using compute_parity_cache is: %d' % (number, cache_results)
 
 shifting_results = compute_parity_shifting(number)
-# print 'parity of %d using compute_parity_shifting is: %d' % (number, shifting_results)
+print 'parity of %d using compute_parity_shifting is: %d' % (number, shifting_results)
