@@ -38,6 +38,44 @@ def convert_base(number, base1, base2):
     = 549 / 9 = 61 R 0
     = 61 / 9 = 6 R 7
     = 670 in base 9
+
+    HOW IT WORKS
+    -------------------------------------------------
+    Converting from the original base to decimal happens left to right by performing the multiplication by the base
+    first in each iteration.  Using the first example from above (245 in base 6 to base 14) we have:
+
+    Iteration 1:
+    x *= 6 / x = 0
+    x += 2 / x = 2
+
+    Iteration 2:
+    x *= 6 / x = 12
+    x += 4 / x = 16
+
+    Iteration 3:
+    x *= 6 / x = 96
+    x += 5 / x = 101
+
+    Doing this the 2 gets multiplied by the base twice or 2 * 6^2, 4 gets multiplied by the base once or 4 * 6^1 and 5
+    gets multiplied by the base never or 5 * 6^0.  Yielding 2 * 6^2 + 4 * 6^1 + 5 * 6^0 which is the same as the
+    elementary formula.
+
+    -------
+
+    Coverting from the decimal to the new base happens by repeatedly computing the remainder at each position.  Using
+    the first example from above (245 in base 6 to base 14.  Decimal value 101) we have:
+
+    Iteration 1:
+    remainder = 101 % 14 / remainder = 3 or (98 R 3)
+    result = 3
+    x = 101 / 14 / x = 7
+
+    Iteration 2:
+    remainder = 7 % 14 / remainder = 7 or (0 R 7)
+    result = 37
+    x = 7 / 14 / x = 0
+
+    The result is then reversed for a value of 73
     """
     is_negative = number[0] == '-'
     x = 0
@@ -73,6 +111,7 @@ def convert_base(number, base1, base2):
 
     result = []
 
+    # Convert the decimal to the new base
     while x:
         remainder = x % base2
 
