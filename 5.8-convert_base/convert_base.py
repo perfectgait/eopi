@@ -1,5 +1,9 @@
 """
 Convert a number from one base to another where both bases are between 2 and 16 (inclusive).
+
+The time complexity is O(n(1 + log(base base2)base1)), where n is the length of s.  The reasoning is as follows.
+First, we perform n multiply-and-adds to get x from s.  Then we perform log(base base2)x multiply and adds to get
+the result.  The value x is upper-bounded by base1^n, and log(base base 2)base1^n = nlog(base base2)base1
 """
 
 __author__ = "Matt Rathbun"

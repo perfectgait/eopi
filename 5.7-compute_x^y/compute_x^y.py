@@ -1,5 +1,7 @@
 """
 Compute the value of x^y
+
+The time complexity is O(n) where n is the number of bits needed to represent y.
 """
 
 __author__ = "Matt Rathbun"

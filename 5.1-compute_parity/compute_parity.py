@@ -1,6 +1,12 @@
 """
 Compute the parity of a large (64-bit) number using different methods.  The parity of a binary word is 1 if the number
 of 1's in the word is odd and 0 if not.
+
+The time complexity of compute_parity_brute_force and compute_parity_erase_lowest_set_bit is O(n) where n is the word
+size in bits.
+The time complexity of compute_parity_cache is O(n/L) where n is the word size in bits and L is the width of the words
+that results are cached for.
+The time complexity of compute_parity_shifting is O(1) assuming bit operations are done in constant time.
 """
 
 __author__ = "Matt Rathbun"
