@@ -1,7 +1,7 @@
 """
 Compute the maximum profit that can be made from one buy and one sell of a stock over a given number of days.
 
-The time complexity is O(n)
+The time complexity of maximum_profit is O(n)
 """
 
 __author__ = "Matt Rathbun"
@@ -14,14 +14,18 @@ def maximum_profit(prices):
     Find the maximum profit from buying and selling a stock once.  The way this works is by continuously finding the
     lowest price and then comparing the profit from selling that on the next day with the current maximum profit.
     """
-    # @TODO Find what python highest int is
-    minimum_price = 999999
+    # This could be set to sys.maxint however that would still leave an edge case where the prices were extremely high.
+    minimum_price = None
     max_profit = 0
 
     for price in prices:
-        max_profit_from_selling_today = price - minimum_price
-        max_profit = max(max_profit, max_profit_from_selling_today)
-        minimum_price = min(minimum_price, price)
+        # Initial iteration
+        if minimum_price is None:
+            minimum_price = price
+        else:
+            max_profit_from_selling_today = price - minimum_price
+            max_profit = max(max_profit, max_profit_from_selling_today)
+            minimum_price = min(minimum_price, price)
 
     return max_profit
 
