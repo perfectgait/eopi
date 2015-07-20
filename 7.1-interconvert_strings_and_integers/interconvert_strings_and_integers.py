@@ -1,5 +1,8 @@
 """
 Convert from a string to an integer and vice versa
+
+The time complexity of int_to_string is O(n)
+The time complexity of string_to_int is O(n)
 """
 
 __author__ = "Matt Rathbun"
