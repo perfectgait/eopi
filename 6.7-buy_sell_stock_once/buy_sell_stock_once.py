@@ -2,6 +2,7 @@
 Compute the maximum profit that can be made from one buy and one sell of a stock over a given number of days.
 
 The time complexity of maximum_profit is O(n)
+The time complexity of longest_subarray is O(n)
 """
 
 __author__ = "Matt Rathbun"
