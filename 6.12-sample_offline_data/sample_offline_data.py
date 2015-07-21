@@ -1,6 +1,8 @@
 """
 Compute a sub-set of n elements where each sub-set is equally likely to occur.  This uses the numpy library
 random_integer method to ensure that the random numbers are drawn from a uniform distribution.
+
+The time complexity of compute_subset is O(n) assuming calls to the random number generator run in O(1) time.
 """
 
 import numpy as np

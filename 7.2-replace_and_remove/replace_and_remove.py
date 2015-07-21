@@ -1,5 +1,7 @@
 """
 Replace and remove characters from a string without allocating a new string with the same length as the original one.
+
+The time complexity of replace_and_remove is O(n)
 """
 
 __author__ = "Matt Rathbun"
