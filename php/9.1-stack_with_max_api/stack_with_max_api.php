@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Stack.php';
+require_once '../lib/Stack.php';
 
 $stack = new Stack();
 $stack->push(10);
