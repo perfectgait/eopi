@@ -1,5 +1,9 @@
 <?php
 
+require_once '../bootstrap.php';
+
+use EOPI\Helper\InputHelper;
+
 /**
  * The time complexity is O(1)
  */
@@ -80,10 +84,8 @@ function computeParityShifting($number)
     return ($fourBitLookupTable >> $number) & 1;
 }
 
-print 'Enter an integer with a value less than or equal to ' . PHP_INT_MAX . ': ';
-$handle = fopen('php://stdin', 'r');
-$number = fgets($handle);
-fclose($handle);
+$inputHelper = new InputHelper();
+$number = $inputHelper->readInputFromStdIn('Enter an integer with a value less than or equal to ' . PHP_INT_MAX . ': ');
 $parity = computeParityShifting((int) $number);
 printf('The parity of %d is %d', $number, $parity);
 print PHP_EOL;

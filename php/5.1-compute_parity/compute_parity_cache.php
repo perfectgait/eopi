@@ -1,13 +1,17 @@
 <?php
 
+require_once '../bootstrap.php';
+
+use EOPI\Helper\InputHelper;
+
 /**
  * The time complexity is O(n/L) where n is the number of bits being looked at and L is the width of the words having
- * their parity pre-computed.  Concretely if we cache the parity of all 16-bit words and the number of bits in the
- * number we are checking the parity of is 64 then the time complexity is O(64/16) or O(4).
+ * their parity pre-computed.  Concretely if we cache the parity of all 8-bit words and the number of bits in the
+ * number we are checking the parity of is 64 then the time complexity is O(64/8) or O(8).
  */
 
 /**
- * Compute the parity of a number by breaking it into smaller words and comparing the parity of each word.  The first
+ * Compute the parity of a number by breaking it into smaller words and xor'ing the parity of each word.  The first
  * step is to cache the parity of all words and then we can use the cached values to speed up the check of the
  * number we want to test.
  * i.e.
@@ -34,10 +38,17 @@ function computeParityCache($number)
     }
 
     $precomputedParities = getParityOfWords();
-    $bitmask = pow(2, PHP_INT_SIZE) - 1;
+    $bitmask = 0b11111111;
 
-    // PHP_INT_SIZE will either be 8 or 4 for 64-bit or 32-bit implementations respectively.  In either case only 8 bit
-    // shifts are necessary as 64 / 8 = 8 and 32 / 4 = 8
+    // 32-bit implementation
+    if (PHP_INT_SIZE == 4) {
+        return $precomputedParities[$number >> (3 * PHP_INT_SIZE) & $bitmask] ^
+            $precomputedParities[$number >> (2 * PHP_INT_SIZE) & $bitmask] ^
+            $precomputedParities[$number >> PHP_INT_SIZE & $bitmask] ^
+            $precomputedParities[$number & $bitmask];
+    }
+
+    // 64-bit implementation
     return $precomputedParities[$number >> (7 * PHP_INT_SIZE)] ^
         $precomputedParities[$number >> (6 * PHP_INT_SIZE) & $bitmask] ^
         $precomputedParities[$number >> (5 * PHP_INT_SIZE) & $bitmask] ^
@@ -49,7 +60,7 @@ function computeParityCache($number)
 }
 
 /**
- * Get an array of the pre-computed parity of all 16-bit words
+ * Get an array of the pre-computed parity of all 8-bit words
  *
  * @return array
  */
@@ -59,7 +70,8 @@ function getParityOfWords()
 
     if (empty($cachedParities)) {
         if (!file_exists('computed_parities.txt')) {
-            for ($i = 0; $i < pow(2, PHP_INT_SIZE); $i++) {
+            // Compute parity of all 8 bit words
+            for ($i = 0; $i <= 255; $i++) {
                 $cachedParities[$i] = computeParityBruteForce($i);
             }
 
@@ -105,10 +117,8 @@ function computeParityBruteForce($number)
     return $result;
 }
 
-print 'Enter an integer with a value less than or equal to ' . PHP_INT_MAX . ': ';
-$handle = fopen('php://stdin', 'r');
-$number = fgets($handle);
-fclose($handle);
+$inputHelper = new InputHelper();
+$number = $inputHelper->readInputFromStdIn('Enter an integer with a value less than or equal to ' . PHP_INT_MAX . ': ');
 $parity = computeParityCache((int) $number);
 printf('The parity of %d is %d', $number, $parity);
 print PHP_EOL;
