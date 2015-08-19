@@ -38,12 +38,14 @@ function swapBits($number, $index1, $index2)
         throw new \InvalidArgumentException('$index1 and $index2 must be greater than 0');
     }
 
-    if (PHP_INT_SIZE == 8 && ($index1 > 64 || $index2 > 64)) {
-        throw new \InvalidArgumentException('$index1 and $index2 must be less than or equal to 64');
+    // Don't let the sign bit be swapped
+    if (PHP_INT_SIZE == 8 && ($index1 > 62 || $index2 > 62)) {
+        throw new \InvalidArgumentException('$index1 and $index2 must be less than or equal to 63');
     }
 
-    if (PHP_INT_SIZE == 4 && ($index1 > 32 || $index2 > 32)) {
-        throw new \InvalidArgumentException('$index1 and $index2 must be less than or equal to 32');
+    // Don't let the sign bit be swapped
+    if (PHP_INT_SIZE == 4 && ($index1 > 30 || $index2 > 30)) {
+        throw new \InvalidArgumentException('$index1 and $index2 must be less than or equal to 31');
     }
 
     // See if the bits differ
@@ -55,9 +57,9 @@ function swapBits($number, $index1, $index2)
 }
 
 $inputHelper = new InputHelper();
-$number = $inputHelper->readInputFromStdIn('Enter an integer with a value between 0 and ' . PHP_INT_MAX . ': ');
+$number = $inputHelper->readInputFromStdIn('Enter an integer: ');
 $index1 = $inputHelper->readInputFromStdIn('Enter index 1 in the swap: ');
 $index2 = $inputHelper->readInputFromStdIn('Enter index 2 in the swap: ');
 $result = swapBits((int) $number, (int) $index1, (int) $index2);
-printf('The result of swapping the %d and %d bits of %b is %b', $index1, $index2, $number, $result);
+printf('The result of swapping the %d and %d bits of %b (%d) is %b (%d)', $index1, $index2, $number, $number, $result, $result);
 print PHP_EOL;
