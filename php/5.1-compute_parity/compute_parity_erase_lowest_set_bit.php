@@ -2,6 +2,7 @@
 
 require_once '../bootstrap.php';
 
+use EOPI\Helper\BitwiseHelper;
 use EOPI\Helper\InputHelper;
 
 /**
@@ -36,14 +37,8 @@ function computeParityEraseLowestSetBit($number)
         throw new \InvalidArgumentException('$number must be an integer');
     }
 
-    if ($number < 0) {
-        $number *= -1;
-    }
-
-    if ($number > PHP_INT_MAX) {
-        throw new \InvalidArgumentException('$number must be less than or equal to ' . PHP_INT_MAX);
-    }
-
+    $bitwiseHelper = new BitwiseHelper();
+    $number = $bitwiseHelper->eraseSignBit($number);
     $result = 0;
 
     while ($number) {
@@ -55,7 +50,7 @@ function computeParityEraseLowestSetBit($number)
 }
 
 $inputHelper = new InputHelper();
-$number = $inputHelper->readInputFromStdIn('Enter an integer with a value less than or equal to ' . PHP_INT_MAX . ': ');
+$number = $inputHelper->readInputFromStdIn('Enter an integer: ');
 $parity = computeParityEraseLowestSetBit((int) $number);
 printf('The parity of %d is %d', $number, $parity);
 print PHP_EOL;

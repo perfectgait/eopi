@@ -2,6 +2,7 @@
 
 require_once '../bootstrap.php';
 
+use EOPI\Helper\BitwiseHelper;
 use EOPI\Helper\InputHelper;
 
 /**
@@ -59,13 +60,8 @@ function computeParityShifting($number)
         throw new \InvalidArgumentException('$number must be an integer');
     }
 
-    if ($number < 0) {
-        $number *= -1;
-    }
-
-    if ($number > PHP_INT_MAX) {
-        throw new \InvalidArgumentException('$number must be less than or equal to ' . PHP_INT_MAX);
-    }
+    $bitwiseHelper = new BitwiseHelper();
+    $number = $bitwiseHelper->eraseSignBit($number);
 
     // This contains the parity of 0, 1, 2 ... starting from the LSB
     static $fourBitLookupTable = 0b0110100110010110;
@@ -85,7 +81,7 @@ function computeParityShifting($number)
 }
 
 $inputHelper = new InputHelper();
-$number = $inputHelper->readInputFromStdIn('Enter an integer with a value less than or equal to ' . PHP_INT_MAX . ': ');
+$number = $inputHelper->readInputFromStdIn('Enter an integer: ');
 $parity = computeParityShifting((int) $number);
 printf('The parity of %d is %d', $number, $parity);
 print PHP_EOL;

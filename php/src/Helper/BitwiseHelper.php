@@ -56,4 +56,23 @@ class BitwiseHelper
 
         return $result;
     }
+
+    /**
+     * Erase the sign bit of an integer
+     *
+     * @param int $number
+     * @return int
+     */
+    public function eraseSignBit($number)
+    {
+        if (!is_int($number)) {
+            throw new \InvalidArgumentException('$number must be an integer');
+        }
+
+        if (PHP_INT_SIZE == 4) {
+            return $number & 0b01111111111111111111111111111111;
+        }
+
+        return $number & 0b0111111111111111111111111111111111111111111111111111111111111111;
+    }
 }
