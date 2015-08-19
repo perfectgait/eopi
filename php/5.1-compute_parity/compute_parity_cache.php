@@ -2,6 +2,7 @@
 
 require_once '../bootstrap.php';
 
+use EOPI\Helper\BitwiseHelper;
 use EOPI\Helper\InputHelper;
 
 /**
@@ -70,11 +71,8 @@ function getParityOfWords()
 
     if (empty($cachedParities)) {
         if (!file_exists('computed_parities.txt')) {
-            // Compute parity of all 8 bit words
-            for ($i = 0; $i <= 255; $i++) {
-                $cachedParities[$i] = computeParityBruteForce($i);
-            }
-
+            $bitwiseHelper = new BitwiseHelper();
+            $cachedParities = $bitwiseHelper->computeParityOfWords(0b11111111);
             $fp = fopen('computed_parities.txt', 'w');
             fwrite($fp, serialize($cachedParities));
             fclose($fp);
@@ -84,37 +82,6 @@ function getParityOfWords()
     }
 
     return $cachedParities;
-}
-
-/**
- * Compute the parity of a number using brute force.  Only used to pre-compute the parity of words.
- *
- * @param int $number
- * @return int
- * @throws \InvalidArgumentException
- */
-function computeParityBruteForce($number)
-{
-    if (!is_int($number)) {
-        throw new \InvalidArgumentException('$number must be an integer');
-    }
-
-    if ($number > PHP_INT_MAX) {
-        throw new \InvalidArgumentException('$number must be less than ' . PHP_INT_MAX);
-    }
-
-    if ($number < 0) {
-        $number *= -1;
-    }
-
-    $result = 0;
-
-    while ($number) {
-        $result ^= $number & 1;
-        $number >>= 1;
-    }
-
-    return $result;
 }
 
 $inputHelper = new InputHelper();
