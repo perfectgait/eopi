@@ -44,12 +44,12 @@ function computeParityBruteForce($number)
         throw new \InvalidArgumentException('$number must be an integer');
     }
 
-    if ($number > PHP_INT_MAX) {
-        throw new \InvalidArgumentException('$number must be less than or equal to ' . PHP_INT_MAX);
-    }
-
     if ($number < 0) {
         $number *= -1;
+    }
+
+    if ($number > PHP_INT_MAX) {
+        throw new \InvalidArgumentException('$number must be less than or equal to ' . PHP_INT_MAX);
     }
 
     $result = 0;
