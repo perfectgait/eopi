@@ -4,6 +4,8 @@ namespace EOPI\Helper;
 
 /**
  * Class InputHelper
+ *
+ * @package EOPI\Helper
  */
 class InputHelper
 {
