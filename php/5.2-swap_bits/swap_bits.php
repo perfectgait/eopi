@@ -34,10 +34,6 @@ function swapBits($number, $index1, $index2)
         throw new \InvalidArgumentException('$number, $index1 and $index2 must all be integers');
     }
 
-    if ($number > PHP_INT_MAX) {
-        throw new \InvalidArgumentException('$number must be less than or equal to ' . PHP_INT_MAX);
-    }
-
     if ($index1 < 0 || $index2 < 0) {
         throw new \InvalidArgumentException('$index1 and $index2 must be greater than 0');
     }
