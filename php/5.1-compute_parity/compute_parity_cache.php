@@ -37,20 +37,20 @@ function computeParityCache($number)
 
     // 32-bit implementation
     if (PHP_INT_SIZE == 4) {
-        return $precomputedParities[$number >> (3 * PHP_INT_SIZE) & $bitmask] ^
-            $precomputedParities[$number >> (2 * PHP_INT_SIZE) & $bitmask] ^
-            $precomputedParities[$number >> PHP_INT_SIZE & $bitmask] ^
+        return $precomputedParities[$number >> (3 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+            $precomputedParities[$number >> (2 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+            $precomputedParities[$number >> BitwiseHelper::WORD_SIZE & $bitmask] ^
             $precomputedParities[$number & $bitmask];
     }
 
     // 64-bit implementation
-    return $precomputedParities[$number >> (7 * PHP_INT_SIZE) & $bitmask] ^
-        $precomputedParities[$number >> (6 * PHP_INT_SIZE) & $bitmask] ^
-        $precomputedParities[$number >> (5 * PHP_INT_SIZE) & $bitmask] ^
-        $precomputedParities[$number >> (4 * PHP_INT_SIZE) & $bitmask] ^
-        $precomputedParities[$number >> (3 * PHP_INT_SIZE) & $bitmask] ^
-        $precomputedParities[$number >> (2 * PHP_INT_SIZE) & $bitmask] ^
-        $precomputedParities[$number >> PHP_INT_SIZE & $bitmask] ^
+    return $precomputedParities[$number >> (7 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+        $precomputedParities[$number >> (6 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+        $precomputedParities[$number >> (5 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+        $precomputedParities[$number >> (4 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+        $precomputedParities[$number >> (3 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+        $precomputedParities[$number >> (2 * BitwiseHelper::WORD_SIZE) & $bitmask] ^
+        $precomputedParities[$number >> BitwiseHelper::WORD_SIZE & $bitmask] ^
         $precomputedParities[$number & $bitmask];
 }
 

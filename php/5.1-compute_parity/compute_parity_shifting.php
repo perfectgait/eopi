@@ -66,15 +66,13 @@ function computeParityShifting($number)
     // This contains the parity of 0, 1, 2 ... starting from the LSB
     static $fourBitLookupTable = 0b0110100110010110;
 
-    $number ^= $number >> (PHP_INT_SIZE * 4);
-    $number ^= $number >> (PHP_INT_SIZE * 2);
-    $number ^= $number >> PHP_INT_SIZE;
-
-    // If the int size is 8 shift one more time so we can use the 4-bit lookup table
     if (PHP_INT_SIZE == 8) {
-        $number ^= $number >> 4;
+        $number ^= $number >> (BitwiseHelper::WORD_SIZE * 4);
     }
 
+    $number ^= $number >> (BitwiseHelper::WORD_SIZE * 2);
+    $number ^= $number >> (BitwiseHelper::WORD_SIZE);
+    $number ^= $number >> BitwiseHelper::WORD_SIZE / 2;
     $number &= 0b1111;
 
     return ($fourBitLookupTable >> $number) & 1;
