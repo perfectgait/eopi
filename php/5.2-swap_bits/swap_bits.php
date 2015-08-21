@@ -27,6 +27,7 @@ use EOPI\Helper\InputHelper;
  * @param int $index1
  * @param int $index2
  * @return int
+ * @throws \InvalidArgumentException
  */
 function swapBits($number, $index1, $index2)
 {

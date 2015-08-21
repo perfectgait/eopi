@@ -17,6 +17,7 @@ use EOPI\Helper\InputHelper;
  *
  * @param int $number
  * @return int
+ * @throws \InvalidArgumentException
  */
 function reverseBits($number)
 {
