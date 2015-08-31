@@ -59,13 +59,18 @@ function computeMultiplicationWithoutMultiplyOrAdd($number1, $number2)
 
     $sum = 0;
 
-    // @TODO Make this work with MAX_INT + MAX_INT
     while ($number1) {
         if ($number1 & 1) {
             $sum = computeAdditionWithoutAdd($sum, $number2);
         }
 
         $number1 >>= 1;
+
+        // If the sum is already at the max and there is more to go, stop.
+        if ($sum >= PHP_INT_MAX && $number1) {
+            throw new \RuntimeException('Multiplying these two numbers will overflow');
+        }
+
         // Multiply $number2 by 2 via a left shift
         $number2 <<= 1;
     }
