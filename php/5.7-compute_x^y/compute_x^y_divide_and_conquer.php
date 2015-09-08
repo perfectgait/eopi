@@ -8,6 +8,56 @@ use EOPI\Helper\InputHelper;
  * The time complexity is O(n) where n is the number of bits needed to represent the $exponent
  */
 
+/**
+ * Compute x^y using divide and conquer.  The way this works is each iteration the base is raised to the 2^k where k
+ * starts at 1.  This happens when the $base is multiplied by the $base.  When the current bit of the exponent is on,
+ * the $result is multiplied by the $base.
+ * i.e.
+ * 2(10)^5(101)
+ *
+ * Iteration 1:
+ * The LSB of 5(101) is set
+ * $result = 2
+ * $base = 4
+ * $exponent = 2(10)
+ *
+ * Iteration 2:
+ * The LSB of 2(10) is not set
+ * $result = 2
+ * $base = 16
+ * $exponent = 1(1)
+ *
+ * Iteration 3:
+ * The LSB of 1(1) is set
+ * $result = 32
+ * $base = 256
+ * $exponent = 0(0)
+ *
+ *
+ * 3(11)^7(111)
+ *
+ * Iteration 1:
+ * The LSB of 7(111) is set
+ * $result = 3
+ * $base = 9
+ * $exponent = 3(11)
+ *
+ * Iteration 2:
+ * The LSB of 3(11) is set
+ * $result = 27
+ * $base = 81
+ * $exponent = 1(1)
+ *
+ * Iteration 3:
+ * The LSB of 1(1) is set
+ * $result = 2187
+ * $base = 6561
+ * $exponent = 0(0)
+ *
+ * @param int $base
+ * @param int $exponent
+ * @return float|int
+ */
 function computeXToTheYDivideAndConquer($base, $exponent)
 {
     if (!is_int($base)) {
