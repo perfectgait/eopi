@@ -23,7 +23,7 @@ use EOPI\Helper\InputHelper;
  * Iteration 2:
  * $power = 0
  * $quotient = 11 (3)
- * $divident = 0 (0)
+ * $dividend = 0 (0)
  *
  * @param int $dividend
  * @param int $divisor
