@@ -20,7 +20,20 @@ use EOPI\Helper\InputHelper;
  * $number = 1234.5
  *
  * Iteration 2:
- * $result =
+ * $result = 54 (5 * 10 + 1234.5 % 10)
+ * $number = 123.45
+ *
+ * Iteration 3:
+ * $result = 543 (54 * 10 + 123.45 % 10)
+ * $number = 12.345
+ *
+ * Iteration 4:
+ * $result = 5432 (543 * 10 + 12.345 % 10)
+ * $number = 1.2345
+ *
+ * Iteration 5:
+ * $result = 54321 (5432 * 10 + 1.2345 % 10)
+ * $number = 0.12345
  *
  * @param int $number
  * @return int
