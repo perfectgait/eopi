@@ -64,6 +64,7 @@ use EOPI\Helper\InputHelper;
  * @param int $base
  * @param int $exponent
  * @return float|int
+ * @throws \InvalidArgumentException
  */
 function computeXToTheYDivideAndConquer($base, $exponent)
 {
