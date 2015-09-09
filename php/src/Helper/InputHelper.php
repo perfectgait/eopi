@@ -25,6 +25,6 @@ class InputHelper
         $value = fgets($handle);
         fclose($handle);
 
-        return $value;
+        return trim($value);
     }
 }
