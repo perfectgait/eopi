@@ -10,8 +10,13 @@ use EOPI\Helper\InputHelper;
 
 /**
  * Compute x^y using divide and conquer.  The way this works is each iteration the base is raised to the 2^k where k
- * starts at 1.  This happens when the $base is multiplied by the $base.  When the current bit of the exponent is on,
- * the $result is multiplied by the $base.
+ * starts at 1.  This lets the algorithm limit the number of multiplications but get the same result.  Consider the
+ * concrete example of 3^7.  In the first iteration, 3 is multiplied by 3 which is 3^2.  In the second iteration, 9 is
+ * multiplied by 9 which is 3^4.  The remaining 3 multiplications are handled by checking to see if the current bit in
+ * the exponent is toggled.  If it is on then a multiplication is performed.  Since 7 is 111 in binary an additional
+ * multiplication is performed in each iteration.  This algorithm takes advantage of the property of exponents that
+ * lets them be broken apart.  3^7 = 3^(4+3) = 3^4 * 3^3.
+ *
  * i.e.
  * 2(10)^5(101)
  *
@@ -35,6 +40,8 @@ use EOPI\Helper\InputHelper;
  *
  *
  * 3(11)^7(111)
+ *
+ * 3 (3) x 3 x 3 (27) x 3 x 3 x 3 x 3 (2187)
  *
  * Iteration 1:
  * The LSB of 7(111) is set
