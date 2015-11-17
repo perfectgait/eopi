@@ -11,12 +11,17 @@ use EOPI\Helper\InputHelper;
 /**
  * Partition an array like the Dutch national flag (into 3 sections).  This works by keeping track of 4 sections of a
  * contiguous array.  The array is partitioned into, smaller, equal, unexplored and larger sections.  As the loop
- * iterates through each element in the array, the element is compared to the pivot.  If it is less than the pivot, the
- * element is swapped with the element at the current smallest index and the current smallest index is incremented by
- * one.  If it is equal to the pivot, the element is left in place and the equal index is incremented by one.  If it is
- * greater than the pivot, the element is swapped with the element at the current largest index and the current largest
- * index is decremented by one.  At the end of the iteration, the unexplored section is gone, leaving just a smaller,
- * equal and larger section.
+ * iterates through each element in the array, the element is compared to the pivot.
+ *
+ * If it is less than the pivot, the element is swapped with the element at the current smallest index.  Then the
+ * current equal index and smallest index are incremented by one.
+ *
+ * If it is equal to the pivot, the element is left in place and the equal index is incremented by one.
+ *
+ * If it is greater than the pivot, the element is swapped with the element at the current largest index and the current
+ * largest index is decremented by one.
+ *
+ * At the end of the iteration, the unexplored section is gone, leaving just a smaller, equal and larger section.
  *
  * i.e.
  * If the array is [7, 3, 9, 0, 6, 5, 1, 4, 2, 8] and the index is 5
