@@ -5,7 +5,7 @@ require_once '../bootstrap.php';
 use EOPI\Helper\InputHelper;
 
 /**
- * The time complexity is O(1) and this uses O(1) more space than the original problem to store the left key
+ * The time complexity is O(n) and this uses O(1) more space than the original problem to store the left key
  */
 
 /**

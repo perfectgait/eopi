@@ -5,7 +5,7 @@ require_once '../bootstrap.php';
 use EOPI\Helper\InputHelper;
 
 /**
- * The time complexity is O(1) and this uses O(1) more space than the original problem to store the left key, right key
+ * The time complexity is O(n) and this uses O(1) more space than the original problem to store the left key, right key
  * and left 2 index.
  */
 
@@ -176,7 +176,7 @@ use EOPI\Helper\InputHelper;
  * @param array $array
  * @return array
  */
-function dutchNationalFlagPartitionVariant1($index, $array)
+function dutchNationalFlagPartitionVariant2($index, $array)
 {
     if (!isset($array[$index])) {
         throw new \OutOfBoundsException('The $index does not exist in the $array');
@@ -232,7 +232,7 @@ function swapElements(&$array, $index1, $index2)
 $inputHelper = new InputHelper();
 $array = json_decode($inputHelper->readInputFromStdIn('Enter the array of objects in json format: '));
 $index = $inputHelper->readInputFromStdIn('Enter the index to use as the pivot: ');
-$result = dutchNationalFlagPartitionVariant1($index, $array);
+$result = dutchNationalFlagPartitionVariant2($index, $array);
 
 printf('Partitioning the array %s results in %s.', json_encode($array), json_encode($result));
 print PHP_EOL;
