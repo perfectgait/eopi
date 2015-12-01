@@ -1,4 +1,4 @@
-#6.4 Multiple Two Big Integers
+#6.3 Multiply Two Big Integers
 Certain applications require arbitrary precision arithmetic.  One way to achieve this is to use strings to represent
 integers, e.g., with one digit or negative sign per character entry, with the most significant digit appearing first.
 Write a progam that take two strings representing integers, and returns an integer representing their product.  For
