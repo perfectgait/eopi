@@ -94,7 +94,6 @@ function checkWinnable(array $board)
     $furthestReach = 0;
 
     for ($i = 0; $i <= $furthestReach && $furthestReach < count($board) - 1; $i++) {
-        print $i . PHP_EOL;
         $furthestReach = max($furthestReach, $i + $board[$i]);
     }
 
