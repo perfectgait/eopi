@@ -76,7 +76,7 @@ use EOPI\Helper\InputHelper;
  * $array = [5,7,11,2,13,5,7,5,7]
  * $writeIndex = 7
  *
- * <<< LOOP TERMINATION: $i == count($array) - 1 >>>
+ * <<< LOOP TERMINATION: $i == count($array) >>>
  *
  * The length of the array without the key is 7
  *
@@ -87,18 +87,18 @@ use EOPI\Helper\InputHelper;
 function deleteArrayKey(array $array, $key)
 {
     if (count($array) < 1) {
-        throw new \InvalidArgumentException('$array is empty');
+        return 0;
     }
 
     $writeIndex = 0;
 
-    for ($i = 0; $i < count($array) - 1; $i++) {
+    for ($i = 0; $i < count($array); $i++) {
         if ($array[$i] != $key) {
             $array[$writeIndex++] = $array[$i];
         }
     }
 
-    return ++$writeIndex;
+    return $writeIndex;
 }
 
 $inputHelper = new InputHelper();
