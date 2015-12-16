@@ -1,4 +1,4 @@
-#6.5 - Delete a Key From an Array
+#6.5 Delete a Key From an Array
 This problem is concerned with writing a remove function for arrays.  Often, languages have library functions for
 performing this operation.  You cannot use these functions.  (Imagine you are implementing the corresponding library.
 

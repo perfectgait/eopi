@@ -1,4 +1,4 @@
-#6.6 - Delete Duplicates From an Array
+#6.6 Delete Duplicates From an Array
 This problem is concerned with deleting repeated elements from a sorted array.  For example, if A =
 [2, 3, 5, 5, 7, 11, 11, 11, 13], then after deletion, A = [2, 3, 5, 7, 11, 13].  After deletion there are 6 valid
 entries in A.  There are no requirements as to the values stored beyond the last valid element.
