@@ -92,9 +92,9 @@ function getNextPermutation(array $permutation)
         return $permutation;
     }
 
-    // Find the smallest entry in $permutation[$k + 1:count($permutation) - 1] that is larger than $permutation[$k] and
-    // swap the two.  We know that $permutation[$k + 1:count($permutation) - 1] is sorted in descending order so the
-    // first element we find in $permutation[$k + 1:count($permutation) - 1] that is greater than $permutation[$k] is
+    // Find the smallest entry in $permutation[$i + 1:count($permutation) - 1] that is larger than $permutation[$i] and
+    // swap the two.  We know that $permutation[$i + 1:count($permutation) - 1] is sorted in descending order so the
+    // first element we find in $permutation[$i + 1:count($permutation) - 1] that is greater than $permutation[$i] is
     // the element we want to swap with.
     for ($j = count($permutation) - 1; $j > $i; $j--) {
         if ($permutation[$j] > $permutation[$i]) {
