@@ -8,11 +8,6 @@ use EOPI\Helper\InputHelper;
  * The time complexity is O(n^2) and the space complexity is O(1)
  */
 
-
-$inputHelper = new InputHelper();
-$matrix = json_decode($inputHelper->readInputFromStdIn('Enter the 2D array representing the matrix in json format: '));
-$result = computeSpiralOrder($matrix);
-
 /**
  * Compute the spiral order of an n x n matrix.  This works by starting at position [0][0] and working around the edge
  * in a clockwise fashion.  When the edge of a row or column is encountered, the direction is changed and the process
@@ -218,6 +213,10 @@ function computeSpiralOrder(array $matrix)
 
     return $result;
 }
+
+$inputHelper = new InputHelper();
+$matrix = json_decode($inputHelper->readInputFromStdIn('Enter the 2D array representing the matrix in json format: '));
+$result = computeSpiralOrder($matrix);
 
 printf('The spiral order of %s is %s.', json_encode($matrix), json_encode($result));
 print PHP_EOL;
