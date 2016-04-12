@@ -5,7 +5,9 @@ require_once '../bootstrap.php';
 use EOPI\Helper\InputHelper;
 
 /**
- * The time complexity is O(n^2) and the space complexity is O(1)
+ * DOUBLE CHECK THIS
+ * 
+ * The time complexity is O(n) and the space complexity is O(1) where n is the length of the $sequence input
  */
 
 /**
