@@ -10,11 +10,11 @@ namespace EOPI\Helper;
 class OutputHelper
 {
     /**
-     * Print an array formatted as rows and columns to stdout
+     * Print a 2D array formatted as rows and columns to stdout
      *
      * @param $array
      */
-    public function printFormattedArrayToStdOut($array)
+    public function printFormatted2DArrayToStdOut($array)
     {
         for ($i = 0; $i < count($array); $i++) {
             print '[';

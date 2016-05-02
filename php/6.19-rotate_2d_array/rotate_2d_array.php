@@ -94,7 +94,7 @@ $array = json_decode($inputHelper->readInputFromStdIn('Enter the n x n 2D array 
 $result = rotateArrayClockwise($array);
 
 print 'Rotating:' . PHP_EOL;
-$outputHelper->printFormattedArrayToStdOut($array);
+$outputHelper->printFormatted2DArrayToStdOut($array);
 print 'Results In:' . PHP_EOL;
-$outputHelper->printFormattedArrayToStdOut($result);
+$outputHelper->printFormatted2DArrayToStdOut($result);
 print PHP_EOL;
