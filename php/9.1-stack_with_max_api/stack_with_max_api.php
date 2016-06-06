@@ -1,6 +1,8 @@
 <?php
 
-require_once '../lib/Stack.php';
+require_once '../bootstrap.php';
+
+use \EOPI\Stack;
 
 $stack = new Stack();
 $stack->push(10);

@@ -1,5 +1,7 @@
 <?php
 
+namespace EOPI;
+
 /**
  * Implementation of a stack that supports a max operation.  The max operation returns the maximum value in the stack.
  * By storing the max value with each item added the max operation runs in O(1) time.
@@ -25,7 +27,7 @@ class Stack extends \SplStack
             $item = $value;
         }
 
-        $item->max = max($item->value, $this->isEmpty() ? $item->value : $this->bottom()->max);
+        $item->max = max($item->value, $this->isEmpty() ? $item->value : $this->max());
 
         parent::push($item);
     }
