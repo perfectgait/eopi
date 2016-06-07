@@ -1,5 +1,7 @@
 <?php
 
+require_once '../bootstrap.php';
+
 /**
  * Check to see if a binary tree is balanced.  The way it works is by doing a post-order traversal and checking each
  * sub-tree for balance and then the root for balance.  If either sub-tree is not balanced the result is returned
@@ -9,10 +11,7 @@
  * The time complexity of checkBalanced is O(n)
  */
 
-require_once '../lib/BinaryTree.php';
-require_once '../lib/Node.php';
-
-use BinaryTree\Node;
+use \EOPI\Node;
 
 /**
  * Check to see if the node in a binary tree is balanced.  That is, is the difference in height of each nodes left and

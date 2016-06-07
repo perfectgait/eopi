@@ -1,17 +1,18 @@
 <?php
 
 /**
- * Binary Tree implementation.  This class does not construct a BST randomly so the operations may run in O(n) time.
+ * Binary Search Tree implementation.  This class does not construct a BST randomly so the operations may run in O(n)
+ * time.
  */
 
-namespace BinaryTree;
+namespace EOPI;
 
-use BinaryTree\Node;
+use EOPI\Node;
 
 /**
- * Class BinaryTree
+ * Class BinarySearchTree
  */
-class BinaryTree
+class BinarySearchTree
 {
     /**
      * @var Node|null
@@ -30,7 +31,7 @@ class BinaryTree
      * Find an element in the tree with the specified key
      *
      * @param $key
-     * @param \BinaryTree\Node|null $node
+     * @param Node|null $node
      * @return Node|null
      */
     public function search($key, Node $node = null)
@@ -113,7 +114,6 @@ class BinaryTree
         $parent = $node->parent;
 
         while ($parent != null && $node = $parent->left) {
-            $node = $parent;
             $parent = $parent->parent;
         }
 
@@ -139,7 +139,6 @@ class BinaryTree
         $parent = $node->parent;
 
         while ($parent != null && $node = $parent->right) {
-            $node = $parent;
             $parent = $parent->parent;
         }
 

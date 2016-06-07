@@ -4,7 +4,7 @@
  * Node in a binary tree
  */
 
-namespace BinaryTree;
+namespace EOPI;
 
 /**
  * Class Node
