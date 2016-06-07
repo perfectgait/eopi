@@ -14,6 +14,10 @@
  */
 function mergeSortedArrays(array $arrays)
 {
+    if (empty($arrays)) {
+        return [];
+    }
+
     $heads = array_fill(0, count($arrays), 0);
     $minHeap = new \SplMinHeap();
     $result = [];
@@ -27,16 +31,17 @@ function mergeSortedArrays(array $arrays)
     }
 
     while (!$minHeap->isEmpty()) {
-        $smallest = $minHeap->extract();
-        $smallestArray = $arrays[$smallest[1]];
-        $smallestHead = $heads[$smallest[1]];
-        $result[] = $smallest[0];
+        $smallestArray = $arrays[$minHeap->top()[1]];
+        $smallestHead = $heads[$minHeap->top()[1]];
+        $result[] = $minHeap->top()[0];
 
         // If the smallest array has more values, put the next one into the heap
         if ($smallestHead < count($smallestArray)) {
-            $minHeap->insert([$smallestArray[$smallestHead], $smallest[1]]);
-            $heads[$smallest[1]] += 1;
+            $minHeap->insert([$smallestArray[$smallestHead], $minHeap->top()[1]]);
+            $heads[$minHeap->top()[1]] += 1;
         }
+
+        $minHeap->extract();
     }
 
     return $result;
