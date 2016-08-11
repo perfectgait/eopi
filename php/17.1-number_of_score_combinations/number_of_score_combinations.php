@@ -5,8 +5,10 @@ require_once '../autoload.php';
 use \EOPI\Helper\InputHelper;
 
 /**
- * The time complexity for computing combinations is ... and the space complexity is ...
- * The time complexity for computing permutations is ... and the space complexity is ...
+ * The time complexity for computing combinations is O(sn) and the space complexity is O(s) where s is the number of
+ * scores and n is the number of plays.
+ * The time complexity for computing permutations is O(sn) and the space complexity is O(s) where s is the number of
+ * scores and n is the number of plays.
  */
 
 /**
