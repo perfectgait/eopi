@@ -5,8 +5,9 @@ require_once '../bootstrap.php';
 use \EOPI\Helper\InputHelper;
 
 /**
- * The running time is O(n) and the space complexity is O(n + m - l) where n is the size of the input array, m is the
- * count of the number of "a" characters found and l is the count of the number of "b" characters found.;
+ * The running time is O(n) and the space complexity is O(m - l) where m is the count of the number of "a" characters
+ * found and l is the count of the number of "b" characters found.  Because the function is given the original array and
+ * it is modified in place it does not include the size of the original array in its space complexity.
  */
 
 /**
