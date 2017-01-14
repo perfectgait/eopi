@@ -3,6 +3,7 @@
 namespace EOPI\Factory;
 
 use EOPI\Node;
+use EOPI\DataStructures\ListNode;
 
 /**
  * Class NodeFactory
@@ -19,6 +20,20 @@ class NodeFactory
         $node = new Node();
         $node->key = $key;
         $node->parent = $parent;
+
+        return $node;
+    }
+
+    /**
+     * @param mixed $value
+     * @param ListNode|null $next
+     * @return ListNode
+     */
+    public static function makeListNode($value, ListNode $next = null)
+    {
+        $node = new ListNode();
+        $node->value = $value;
+        $node->next = $next;
 
         return $node;
     }
