@@ -24,7 +24,7 @@ class BinarySearchTree extends BinaryTree
      */
     public function __construct()
     {
-        $this->root = null;
+        parent::__construct();
     }
 
     /**
