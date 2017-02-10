@@ -55,9 +55,7 @@ function computeIntegerSquareRoot($k)
 
     while ($left <= $right) {
         $midway = floor(($right + $left) / 2);
-
-        print $midway . PHP_EOL;
-
+        
         if ($midway * $midway > $k) {
             $right = $midway - 1;
         } else {
