@@ -1,6 +1,6 @@
 <?php
 
-namespace EOPI\DataStructures;
+namespace EOPI\DataStructure;
 
 class ObjectMaxHeap extends \SplMaxHeap
 {

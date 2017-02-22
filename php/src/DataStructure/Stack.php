@@ -1,6 +1,6 @@
 <?php
 
-namespace EOPI;
+namespace EOPI\DataStructure;
 
 /**
  * Implementation of a stack that supports a max operation.  The max operation returns the maximum value in the stack.

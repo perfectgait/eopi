@@ -1,6 +1,8 @@
 <?php
 
-namespace EOPI\DataStructures;
+namespace EOPI\DataStructure;
+
+use EOPI\ListNode;
 
 /**
  * Class SinglyLinkedList

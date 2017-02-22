@@ -5,7 +5,7 @@
  * time.
  */
 
-namespace EOPI;
+namespace EOPI\DataStructure;
 
 use EOPI\Node;
 

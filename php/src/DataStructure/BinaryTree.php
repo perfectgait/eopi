@@ -1,6 +1,8 @@
 <?php
 
-namespace EOPI;
+namespace EOPI\DataStructure;
+
+use EOPI\Node;
 
 /**
  * Class BinaryTree
