@@ -20,14 +20,6 @@ class BinarySearchTree extends BinaryTree
     public $root;
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Find an element in the tree with the specified key
      *
      * @param $key
